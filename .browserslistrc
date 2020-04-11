@@ -1,6 +1,6 @@
-> 2%
+defaults
 last 2 versions
 not op_mini all
-not ie 11
-android
+not ie <=11
+maintained node versions
 edge 18
