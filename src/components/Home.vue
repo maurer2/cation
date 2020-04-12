@@ -34,10 +34,7 @@ export default {
   },
   data() {
     return {
-      slideOptions: {
-        initialSlide: 1,
-        speed: 400,
-      },
+
     };
   },
   computed: {
@@ -61,6 +58,7 @@ export default {
   display: block;
   padding: 1rem;
   border: 1px solid #c3c3c3;
+  text-decoration: none;
 
   & + & {
     margin-top: 1rem;
