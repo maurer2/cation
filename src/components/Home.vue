@@ -8,33 +8,16 @@
       </ion-toolbar>
     </ion-header>
     <ion-content padding>
-      <ion-slides
-        pager="true"
-        :options="slideOptions"
-      >
-        <ion-slide>
-          <div class="slide-content">
-            <h2 class="slide-title">
-              Carbon
-            </h2>
-            <ion-img
-              class="slide-image"
-              src="carbon.svg"
-            />
-          </div>
-        </ion-slide>
-        <ion-slide>
-          <div class="slide-content">
-            <h2 class="slide-title">
-              Astatine
-            </h2>
-            <ion-img
-              class="slide-image"
-              src="astatine.svg"
-            />
-          </div>
-        </ion-slide>
-      </ion-slides>
+      <nav class="nav">
+        <router-link
+          v-for="route in routes"
+          :key="route.path"
+          class="nav-link"
+          :to="route.path"
+        >
+          {{ route.name }}
+        </router-link>
+      </nav>
     </ion-content>
     <ion-footer>
       <ion-toolbar color="secondary">
@@ -57,20 +40,31 @@ export default {
       },
     };
   },
+  computed: {
+    routes() {
+      const allLinks = this.$router.options.routes ?? [];
+      const linksWithoutRedirects = allLinks.filter((link) => !('redirect' in link));
+
+      return linksWithoutRedirects;
+    },
+  },
 };
 
 </script>
 
 <style scoped lang="scss">
-.slide-content {
+.nav {
+  margin: 1rem;
+}
+
+.nav-link {
   display: block;
+  padding: 1rem;
+  border: 1px solid #c3c3c3;
+
+  & + & {
+    margin-top: 1rem;
+  }
 }
 
-.slide-title {
-
-}
-.slide-image {
-  max-width: 75%;
-  margin: auto;
-}
 </style>

@@ -13,6 +13,11 @@ const routes = [
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '@/components/Home'),
   },
+  {
+    path: '/slider',
+    name: 'slider',
+    component: () => import(/* webpackChunkName: "home" */ '@/components/Slider'),
+  },
 ];
 
 const router = new IonicVueRouter({
